@@ -39,7 +39,7 @@ namespace tsp1
         private void button2_Click(object sender, EventArgs e)
         {
             dbConnect.ConnectionString = conStr;
-            string mySelect = "UPDATE Business SET ([name],[adress],[phone]) = ('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "') WHERE  id = " + textBox1.Text;
+            string mySelect = "UPDATE Business SET [name] =   '" + textBox2.Text + "',[adress] = '" + textBox3.Text + "',[phone] = '" + textBox4.Text + "' WHERE  id = " + textBox1.Text;
             OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
             dbConnect.Open();
             dbCmd.CommandText = mySelect;

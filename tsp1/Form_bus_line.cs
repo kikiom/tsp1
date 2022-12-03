@@ -44,7 +44,7 @@ namespace tsp1
         private void button2_Click(object sender, EventArgs e)
         {
             dbConnect.ConnectionString = conStr;
-            string mySelect = "UPDATE Bus_lines SET ([line],[active_bus_number]) = ('" + textBox2.Text +"','"+textBox3.Text +"') WHERE  id = " + textBox1.Text;
+            string mySelect = "UPDATE Bus_lines SET [line] = '" + textBox2.Text + "',[active_bus_number] = " + textBox3.Text +" WHERE  id = " + textBox1.Text;
             OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
             dbConnect.Open();
             dbCmd.CommandText = mySelect;

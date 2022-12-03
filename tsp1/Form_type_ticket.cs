@@ -32,8 +32,8 @@ namespace tsp1
         {
 
             dbConnect.ConnectionString = conStr;
-            string mySelect = "Insert INTO Business ( time,price ) Values ( "
-            + textBox2.Text + "," + textBox3.Text + " )";
+            string mySelect = "Insert INTO Type_ticket ( [time],[price] ) Values ( '"
+            + textBox2.Text + "','" + textBox3.Text + "' )";
             OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
             dbConnect.Open();
             dbCmd.CommandText = mySelect;
@@ -45,7 +45,7 @@ namespace tsp1
         private void button2_Click(object sender, EventArgs e)
         {
             dbConnect.ConnectionString = conStr;
-            string mySelect = "UPDATE Business SET (time,price) = ('" + textBox2.Text + "','" + textBox3.Text  + "') WHERE  id = " + textBox1.Text;
+            string mySelect = "UPDATE Type_ticket SET [time] = '" + textBox2.Text + "',[price] = '" + textBox3.Text  + "' WHERE  id = " + textBox1.Text;
             OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
             dbConnect.Open();
             dbCmd.CommandText = mySelect;
@@ -57,7 +57,7 @@ namespace tsp1
         private void button3_Click(object sender, EventArgs e)
         {
             dbConnect.ConnectionString = conStr;
-            string mySelect = "DELETE FROM Business WHERE id=" + textBox1.Text;
+            string mySelect = "DELETE FROM Type_ticket WHERE id=" + textBox1.Text;
             OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
             dbConnect.Open();
             dbCmd.CommandText = mySelect;

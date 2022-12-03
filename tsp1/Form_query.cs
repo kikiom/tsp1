@@ -59,11 +59,6 @@ namespace tsp1
             DisplayData(mySelect);
             chart1.Series.Clear();
 
-            // Data arrays
-
-            
-            
-
             // Set palette
             chart1.Palette = ChartColorPalette.EarthTones;
 
@@ -71,7 +66,7 @@ namespace tsp1
             chart1.Titles.Add("Bus Prihod");
 
             List<string> list_line = new List<string>();
-            List<int> ints= new List<int>();
+            List<double> ints= new List<double>();
             dbConnect.ConnectionString = conStr;
             string mySelect1 = "Select * from Query5";
             dbConnect.Open();
@@ -82,12 +77,12 @@ namespace tsp1
             while (reader.Read())
             {
                 list_line.Add( reader["active_bus_number"].ToString() );
-                ints.Add( int.Parse(reader["SumOfprice"].ToString()) );
+                ints.Add(double.Parse( reader["SumOfprice"].ToString() ) );
             }
 
             dbConnect.Close();
             string[] seriesArray = list_line.ToArray();
-            int[] pointsArray = ints.ToArray();
+            double[] pointsArray = ints.ToArray();
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
             {
