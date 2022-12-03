@@ -1,0 +1,61 @@
+public Form1()
+        {
+            InitializeComponent();
+        }
+
+        string conStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\zlati\Desktop\test.mdb";
+        OleDbConnection dbConnect = new OleDbConnection();
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.Items.Add("economy");
+            comboBox1.Items.Add("business");
+            comboBox2.Items.Add("option 1");
+            comboBox2.Items.Add("potion 2");
+
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
+        }
+
+        
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+            dbConnect.ConnectionString = conStr;
+            string mySelect = "Insert into Airport(Model, Crew, Number_of_seats, Average_speed, Destination, Class, Menu, Ticket_price, Number_of_luggage, Pounds_permissible) Values('"
+            + textBox1.Text + "','" + textBox2.Text + "'," + textBox3.Text + "," + textBox4.Text
+            + ",'" + textBox5.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "'," + textBox6.Text +
+            ",'" + textBox7.Text + "','" + textBox8.Text + "')";
+            OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
+            dbConnect.Open();
+            dbCmd.CommandText = mySelect;
+            dbCmd.Connection = dbConnect;
+            dbCmd.ExecuteNonQuery();
+            dbConnect.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dbConnect.ConnectionString = conStr;
+            string mySelect = "UPDATE Airport SET Model = '" + textBox1.Text + "' WHERE  Aircraft_number= " + textBox9.Text;
+            OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
+            dbConnect.Open();
+            dbCmd.CommandText = mySelect;
+            dbCmd.Connection = dbConnect;
+            dbCmd.ExecuteNonQuery();
+            dbConnect.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dbConnect.ConnectionString = conStr;
+            string mySelect = "DELETE FROM Airport WHERE Aircraft_number=" + textBox9.Text;
+            OleDbCommand dbCmd = new OleDbCommand(mySelect, dbConnect);
+            dbConnect.Open();
+            dbCmd.CommandText = mySelect;
+            dbCmd.Connection = dbConnect;
+            dbCmd.ExecuteNonQuery();
+            dbConnect.Close();
+        }
+    }
